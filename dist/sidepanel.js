@@ -25610,7 +25610,38 @@ document.addEventListener("DOMContentLoaded", () => {
   container.style.height = "100vh";
   const editor = new Editor_default(container);
   editor.addToolbar();
+  const saveBtn = document.getElementById("btn-save");
+  saveBtn?.addEventListener("click", async () => {
+    const key = await getProblemKey();
+    const svgString = editor.toSVG().outerHTML;
+    await chrome.storage.local.set({ [key]: svgString });
+    console.log("Saved note for:", key);
+  });
+  const loadBtn = document.getElementById("btn-load");
+  loadBtn?.addEventListener("click", async () => {
+    const key = await getProblemKey();
+    const result = await chrome.storage.local.get(key);
+    const savedSvgString = result[key];
+    if (savedSvgString) {
+      editor.loadFromSVG(savedSvgString);
+      console.log("Loaded note for:", key);
+    } else {
+      console.log("No saved note found for this problem.");
+    }
+  });
 });
+async function getProblemKey() {
+  const tabs = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+  const activeTab = tabs[0];
+  if (activeTab && activeTab.url) {
+    const url = new URL(activeTab.url);
+    const match = url.pathname.match(/\/problems\/([^/]+)/);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+  return "default-note";
+}
 /*! Bundled license information:
 
 @melloware/coloris/dist/esm/coloris.js:

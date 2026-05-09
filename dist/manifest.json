@@ -3,7 +3,7 @@
   "name": "LeetNote",
   "version": "1.0",
   "description": "A side panel notepad for LeetCode.",
-  "permissions": ["sidePanel"],
+  "permissions": ["sidePanel", "storage", "tabs"],
   "background": {
     "service_worker": "background.js"
   },
