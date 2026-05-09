@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-    <html>
-      <head>
-        <title>LeetNote</title>
-        <style>
-          body { font-family: sans-serif; padding: 10px; background-color: #1e1e1e; color: white;}
-          h1 { font-size: 16px; }
-        </style>
-      </head>
-      <body>
-        <h1>LeetCode Notes</h1>
-        <p>Canvas Here</p>
-        <script type="module" src="sidepanel.js"></script>
-      </body>
-    </html>
+<html>
+  <head>
+    <title>LeetNote</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 10px;
+        background-color: #1e1e1e;
+        color: white;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 16px;
+      }
+
+      #editor-container {
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>LeetCode Notes</h1>
+    <p>Canvas Here</p>
+
+    <div id="editor-container"></div>
+
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>
