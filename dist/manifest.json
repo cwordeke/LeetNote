@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "LeetNote",
+  "version": "1.0",
+  "description": "A side panel notepad for LeetCode.",
+  "permissions": ["sidePanel"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open LeetNote"
+  }
+}
